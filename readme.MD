@@ -2,7 +2,7 @@
 
 ## Summary
 
-phpodcast is a simple php program that allows you to server your own podcast from a web server.
+phpodcast is a simple PHP program that allows you to serve your own podcast from a web server.
 It reads a list of files from a predefined directory and uses them to
 generate a podcast RSS feed with episodes.
 
