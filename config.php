@@ -1,14 +1,14 @@
 <?php
-$title = 'Some Test Title';
-$summary = 'my summary';
-$description = 'my description';
-$url = 'https://mydomain.com/location/index.php';
-$author = 'Author Name';
-$email = "x@x.com";
+$title = 'PHPodcast Test Podcast';
+$summary = 'This is a test podcast using PHPodcast. Check out the code at httsp://github.com/nabsul/phpodcast.';
+$description = 'This is a test podcast using PHPodcast. Check out the code at httsp://github.com/nabsul/phpodcast.';
+$url = 'https://phpodcast.nabeel.us/';
+$author = 'Nabeel Sulieman';
+$email = "me@nabeel.us";
 $language = 'en-us';
-$imageUrl = 'https://mydomain.com/location/image.png';
-$episodesDirectory = __DIR__ . '/episodes/';
-$episodeBaseUrl = 'https://mydomain.com/location/episodes/';
+$imageUrl = 'https://phpodcast.nabeel.us/image.png';
+$episodesDirectory = __DIR__ . '/audio/';
+$episodeBaseUrl = 'https://phpodcast.nabeel.us/audio/';
 
 $categories = [
 	'Technology',
@@ -19,7 +19,9 @@ function getFileDate($file) {
 	return date_format( $date, 'D, d M Y H:i:s' ) . ' GMT';
 }
 
-function getFileTitle($file) { return $file; }
+function getFileTitle($file) { 
+	return "Episode with file name: $file"; 
+}
 
 // Get a list of files
 $files = array_filter(scandir($episodesDirectory), function($file) {
@@ -29,7 +31,7 @@ $files = array_filter(scandir($episodesDirectory), function($file) {
 $episodes = [];
 foreach($files as $file) {
 	$episodes[] = [
-		'url' => $episodeBaseUrl . $file,
+		'url' => $episodeBaseUrl . rawurlencode($file),
 		'length' => filesize($episodesDirectory . $file),
 		'title' => getFileTitle($file),
 		'author' => $author,
